@@ -3,6 +3,8 @@ name: Herald
 slug: herald
 version: 0.1.0
 description: Grounded product communication — announcements built from code evidence, not promises
+domain:
+  - operations
 author: 0xHoneyJar
 license: MIT
 skills:
