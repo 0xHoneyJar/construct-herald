@@ -41,6 +41,13 @@ events:
         features: array
         date_range: string
   consumes: []
+composition_paths:
+  reads:
+    - "grimoires/laboratory/"
+  writes:
+    - "grimoires/herald/"
+governed_by:
+  - vocabulary-bank
 identity:
   persona: identity/persona.yaml
   expertise: identity/expertise.yaml
