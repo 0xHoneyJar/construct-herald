@@ -3,7 +3,7 @@ name: Herald
 slug: herald
 version: 0.1.0
 description: Grounded product communication — announcements built from code evidence, not promises
-short_description: "Grounded product comms"
+short_description: "Evidence-grounded changelog + announcements"
 domain:
   - operations
 author: 0xHoneyJar
