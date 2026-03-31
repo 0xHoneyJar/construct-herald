@@ -2,7 +2,7 @@ schema_version: 3
 name: Herald
 slug: herald
 version: 0.1.0
-description: Grounded product communication — announcements built from code evidence, not promises
+description: "Changelog and announcement generation grounded in code evidence. Three skills: draft community announcements from shipping history (commits + PRs), extract voice profiles from existing content for consistency, and produce structured change timelines from git history. Every claim traces to a real commit."
 short_description: "Evidence-grounded changelog + announcements"
 domain:
   - operations
