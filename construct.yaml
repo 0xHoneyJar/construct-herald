@@ -41,6 +41,13 @@ events:
         features: array
         date_range: string
   consumes: []
+streams:
+  reads:
+    - Intent
+    - Artifact
+  writes:
+    - Artifact
+
 composition_paths:
   reads:
     - "grimoires/laboratory/"
