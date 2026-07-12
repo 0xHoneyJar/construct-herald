@@ -1,7 +1,7 @@
 schema_version: 3
 name: Herald
 slug: herald
-version: 0.1.0
+version: 0.2.0
 description: "Changelog and announcement generation grounded in code evidence. Three skills: draft community announcements from shipping history (commits + PRs), extract voice profiles from existing content for consistency, and produce structured change timelines from git history. Every claim traces to a real commit."
 short_description: "Evidence-grounded changelog + announcements"
 domain:
@@ -40,6 +40,12 @@ events:
         scope: string
         features: array
         date_range: string
+    - type: forge.herald.stench_gated
+      description: Copy passed (or was held at) the AI-stench markov blanket
+      data_schema:
+        scope: string
+        high: integer
+        verdict: string
   consumes: []
 streams:
   reads:
@@ -55,6 +61,20 @@ composition_paths:
     - "grimoires/herald/"
 governed_by:
   - vocabulary-bank
+# Honored Verification (ACVP-at-the-construct-layer): HERALD reasons, the deterministic
+# tool verifies, and HERALD's active inference HONORS the verdict. The skill body runs
+# the verifier and heals until exit 0; copy cannot cross into output with stench on it.
+# GECKO owns the evolving lexicon inside the tool. Manifest-level checking by
+# construct-validate.sh is a framework follow-up (today the skill body honors it directly).
+verifiers:
+  - id: ai-stench
+    file: scripts/ai-stench-check.mjs
+    runtime: node
+    scope: voice              # voice | contract | taste | ground | schema
+    contract: stdin-or-files  # accepts <file...> or stdin "-"
+    pass_when: exit-0         # exit 0 = honored; exit 1 = held at the boundary
+    blocking: true            # fail-block, not report-only
+    findings: --json
 capabilities:
   model_tier: sonnet
   danger_level: moderate

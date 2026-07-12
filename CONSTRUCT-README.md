@@ -12,7 +12,7 @@
 | field | value |
 |---|---|
 | slug | `herald` |
-| version | `0.1.0` |
+| version | `0.2.0` |
 | schema_version | `3` |
 | author | 0xHoneyJar |
 | license | MIT |

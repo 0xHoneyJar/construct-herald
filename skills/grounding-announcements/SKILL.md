@@ -170,7 +170,26 @@ VALIDATION PASS:
 
 **If any check fails**, rewrite the offending sentence before proceeding.
 
-### Phase 5: Deliver
+### Phase 5: Cross the Markov Blanket (deterministic verify, then heal)
+
+Phase 4 is HERALD's own subjective judgment. This phase is the deterministic floor it
+cannot self-grade past (Honored Verification: the construct reasons, the tool verifies,
+HERALD honors the exit code). The verifier is declared in `construct.yaml` (`verifiers[]`,
+id `ai-stench`); GECKO owns its evolving lexicon.
+
+1. Write the draft to a temp file (or pipe it via stdin).
+2. Run the declared gate:
+   ```bash
+   node scripts/ai-stench-check.mjs --json <draft>   # or:  printf '%s' "$draft" | node scripts/ai-stench-check.mjs -
+   ```
+3. **If exit 1** (any HIGH marker, for example an em dash or the "it's not X, it's Y" cadence
+   or the LLM lexicon): read `hits[]`, rewrite ONLY the flagged spans in human voice, then
+   re-run. Loop until exit 0. Do NOT rationalize a near miss; the exit code is the gate, not
+   your opinion of it.
+4. **Only on exit 0** does the announcement cross into Phase 6. Emit `forge.herald.stench_gated`
+   with `{scope, high: 0, verdict: "honored"}`.
+
+### Phase 6: Deliver
 
 1. Copy final announcement to clipboard (`pbcopy`)
 2. Present in conversation for review

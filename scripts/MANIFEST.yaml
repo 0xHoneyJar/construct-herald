@@ -1,0 +1,24 @@
+# HERALD script inventory (shape mirrors construct-gecko/scripts/MANIFEST.yaml).
+# Read by CI / tooling to know what deterministic tools this construct ships.
+scripts:
+  - name: ai-stench-check
+    file: ai-stench-check.mjs
+    runtime: node
+    description: >
+      AI-stench markov blanket — the boundary copy cannot cross with the smell on it.
+      Scans for em/en dashes, the "it's not X, it's Y" cadence, the LLM lexicon,
+      throat-clear transitions, and hype words. Exit 1 on any HIGH marker.
+      HERALD's skill body runs it and heals until exit 0 (Honored Verification:
+      the construct reasons, the tool verifies, the active inference honors the verdict).
+      GECKO owns the evolving RULES lexicon.
+    args:
+      - name: "<file...>"
+        type: path
+      - name: "-"
+        type: stdin
+      - name: "--json"
+        type: boolean
+    output: "Findings to stdout (JSON with --json). Exit 1 if any HIGH stench, else 0."
+    side_effects: []
+    credentials: []
+    danger: safe
